@@ -76,13 +76,14 @@ export default async (req: any, res: any) => {
     await (async () => {
       logger.push(interceptedRequest.url());
       if (interceptedRequest.url().includes('.m3u8')) finalResponse.source = interceptedRequest.url();
+      if (interceptedRequest.url().includes('.vtt')) finalResponse.subtitle.push(interceptedRequest.url());
       interceptedRequest.continue();
     })();
   });
   
   try {
     const [req] = await Promise.all([
-      page.waitForRequest(req => req.url().includes('.m3u8'), { timeout: 30000 }),
+      page.waitForRequest(req => req.url().includes('.m3u8'), { timeout: 20000 }),
       page.goto(`https://rabbitstream.net/v2/embed-4/${id}?z=&_debug=true`, { waitUntil: 'domcontentloaded' }),
     ]);
   } catch (error) {
