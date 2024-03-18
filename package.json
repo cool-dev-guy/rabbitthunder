@@ -1,0 +1,27 @@
+{
+  "name": "rabbitthunder",
+  "version": "1.0.0",
+  "description": "A rabbit stream extractor based on puppeteer by cool-dev-guy.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "cool-dev-guy",
+  "license": "GPLv3",
+  "dependencies": {
+    "@sparticuz/chromium": "^119.0.2",
+    "puppeteer-core": "^21.5.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "pkg": {
+    "assets": "node_modules/puppeteer-extra-plugin-stealth/**/*.*"
+  }
+}
