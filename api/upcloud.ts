@@ -1,3 +1,4 @@
+// written by cool-dev-guy
 const puppeteer = require('puppeteer-extra');
 const chrome = require('@sparticuz/chromium');
 
