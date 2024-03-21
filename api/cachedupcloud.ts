@@ -43,14 +43,16 @@ export default async (req: any, res: any) => {
 
   // Some checks...
   if (!body) return res.status(400).end(`No body provided`)
-  if (typeof body === 'object' && !body.id) return res.status(400).end(`No url provided`)
+  if (typeof body === 'object' && !body.id) return res.status(400).end(`No id provided.`)
+  if (typeof body === 'object' && !body.baseId) return res.status(400).end(`No baseId provided.`)
   
   const id = body.id;
+  const baseId = body.baseId;
   const dateConstant = new Date('2024-03-18T10:30:00.000Z');
   const { data: record, error } = await supabase
     .from('streams')
     .select('*')
-    .eq('id', id)
+    .eq('id', baseId)
     .maybeSingle();
 
   // router.
@@ -158,7 +160,7 @@ export default async (req: any, res: any) => {
       // upsert the data,currently no return cases are checked,but if it works ... then it works ... can fix later ig [TODO] 
       const { error } = await supabase
         .from('streams')
-        .upsert([{ id: id, date_time:dateConstant.toISOString() , stream: finalResponse.source, subtitle: finalResponse.subtitle }], { onConflict: ['id'] });
+        .upsert([{ id: baseId, date_time:dateConstant.toISOString() , stream: finalResponse.source, subtitle: finalResponse.subtitle }], { onConflict: ['id'] });
       res.json(finalResponse);
     };
   };
