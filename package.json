@@ -12,7 +12,8 @@
     "@sparticuz/chromium": "^119.0.2",
     "puppeteer-core": "^21.5.1",
     "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2"
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "@supabase/supabase-js":"^2.39.8"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
